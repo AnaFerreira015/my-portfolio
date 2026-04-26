@@ -1,0 +1,248 @@
+@import url('https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Source+Serif+4:opsz,wght@8..60,500;8..60,600;8..60,700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ===========================================================
+   Design system — Accessible editorial portfolio
+   Fonts: Atkinson Hyperlegible (body, designed for accessibility)
+          + Source Serif 4 (headings, high readability serif).
+   Colors verified for WCAG AA/AAA contrast.
+   All colors HSL.
+   =========================================================== */
+
+@layer base {
+  :root {
+    /* Surfaces — warm off-white, easy on the eyes (less glare than pure white) */
+    --background: 40 30% 97%;            /* #faf8f3 */
+    --foreground: 220 30% 11%;           /* #131a26  — 16.1:1 on bg (AAA) */
+
+    --card: 0 0% 100%;
+    --card-foreground: 220 30% 11%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 30% 11%;
+
+    /* Brand */
+    --primary: 220 45% 16%;              /* #172339  — 13.4:1 (AAA) */
+    --primary-foreground: 40 30% 97%;
+    --primary-muted: 220 30% 28%;
+
+    --secondary: 40 22% 92%;
+    --secondary-foreground: 220 30% 11%;
+
+    --muted: 40 18% 94%;
+    --muted-foreground: 220 14% 32%;     /* #46505e  — 8.5:1 on bg (AAA) */
+
+    /* Accent — deepened ochre for AA compliance on light bg */
+    --accent: 22 80% 36%;                /* #a64711  — 5.4:1 on bg (AA) */
+    --accent-foreground: 0 0% 100%;
+    --accent-soft: 36 75% 92%;
+
+    /* Hero (always dark) */
+    --hero: 220 50% 9%;                  /* #0c1322 */
+    --hero-foreground: 40 30% 97%;       /* 17:1 on hero (AAA) */
+    --hero-muted: 220 18% 78%;           /* #bdc4d2 — 9.5:1 on hero (AAA) */
+    --hero-stripe: 220 40% 14%;
+    --hero-accent: 32 95% 68%;           /* #fbb35e — 9.6:1 on hero (AAA) */
+
+    --destructive: 0 70% 38%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 220 14% 86%;
+    --input: 220 14% 80%;
+    --ring: 22 80% 36%;
+
+    --radius: 0.5rem;
+
+    /* Typography */
+    --font-serif: 'Source Serif 4', ui-serif, Georgia, serif;
+    --font-sans: 'Atkinson Hyperlegible', ui-sans-serif, system-ui, sans-serif;
+
+    /* Effects */
+    --shadow-soft: 0 1px 2px hsl(220 25% 12% / 0.04), 0 8px 24px -12px hsl(220 25% 12% / 0.08);
+
+    --transition-smooth: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+    /* Sidebar (kept for shadcn compatibility) */
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    /* Dark mode — verified for AA/AAA contrast */
+    --background: 220 30% 8%;            /* #0e1420 */
+    --foreground: 40 25% 95%;            /* #f4f1ea — 16.5:1 (AAA) */
+
+    --card: 220 25% 11%;
+    --card-foreground: 40 25% 95%;
+
+    --popover: 220 25% 11%;
+    --popover-foreground: 40 25% 95%;
+
+    --primary: 40 25% 95%;
+    --primary-foreground: 220 30% 8%;
+    --primary-muted: 40 20% 80%;
+
+    --secondary: 220 18% 15%;
+    --secondary-foreground: 40 25% 95%;
+
+    --muted: 220 18% 15%;
+    --muted-foreground: 220 15% 75%;     /* #b3bbcc — 9.5:1 (AAA) */
+
+    --accent: 32 90% 70%;                /* #fac280 — 10:1 on dark bg (AAA) */
+    --accent-foreground: 220 30% 8%;
+    --accent-soft: 220 20% 16%;
+
+    --hero: 220 35% 6%;
+    --hero-foreground: 40 25% 95%;
+    --hero-muted: 220 15% 78%;
+    --hero-stripe: 220 25% 11%;
+    --hero-accent: 32 90% 70%;
+
+    --destructive: 0 65% 55%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 220 16% 22%;
+    --input: 220 16% 26%;
+    --ring: 32 90% 70%;
+
+    --shadow-soft: 0 1px 2px hsl(0 0% 0% / 0.3), 0 8px 24px -12px hsl(0 0% 0% / 0.5);
+
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+
+  html {
+    /* Slightly larger base for better readability */
+    font-size: 17px;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-family: var(--font-sans);
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.65;
+    letter-spacing: 0.005em;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-serif);
+    @apply tracking-tight text-foreground;
+    line-height: 1.2;
+  }
+
+  /* Strong, highly visible focus ring (3px, AAA) */
+  :focus-visible {
+    @apply outline-none;
+    outline: 3px solid hsl(var(--ring));
+    outline-offset: 3px;
+    border-radius: 3px;
+  }
+
+  /* Selection with safe contrast */
+  ::selection {
+    background: hsl(var(--accent));
+    color: hsl(var(--accent-foreground));
+  }
+
+  /* Underline links inside prose body for clarity */
+  p a, li a {
+    text-underline-offset: 3px;
+    text-decoration-thickness: 1.5px;
+  }
+}
+
+@layer components {
+  .container-prose {
+    @apply mx-auto w-full max-w-6xl px-5 sm:px-8;
+  }
+
+  .container-narrow {
+    @apply mx-auto w-full max-w-4xl px-5 sm:px-8;
+  }
+
+  .section {
+    @apply py-20 sm:py-28 scroll-mt-24;
+  }
+
+  .eyebrow {
+    @apply inline-block text-xs font-medium uppercase tracking-[0.2em] text-accent;
+  }
+
+  .section-title {
+    @apply mt-3 text-3xl sm:text-4xl font-semibold leading-[1.1];
+    font-family: var(--font-serif);
+  }
+
+  .section-lede {
+    @apply mt-4 text-base sm:text-lg text-muted-foreground max-w-2xl leading-relaxed;
+  }
+
+  .link-underline {
+    @apply text-foreground underline decoration-accent/60 decoration-2 underline-offset-4 transition-colors hover:text-accent hover:decoration-accent;
+  }
+
+  .skip-link {
+    @apply sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[100] focus:rounded-md focus:bg-primary focus:px-4 focus:py-2 focus:text-primary-foreground focus:shadow-lg;
+  }
+
+  /* Hero diagonal stripes */
+  .hero-stripes {
+    background-color: hsl(var(--hero));
+    background-image: repeating-linear-gradient(
+      135deg,
+      transparent 0,
+      transparent 38px,
+      hsl(var(--hero-stripe) / 0.55) 38px,
+      hsl(var(--hero-stripe) / 0.55) 39px
+    );
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  .text-pretty {
+    text-wrap: pretty;
+  }
+}

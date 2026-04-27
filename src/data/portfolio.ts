@@ -42,22 +42,22 @@ export const researchInterests = [
     title: "Human–Computer Interaction",
     description: "User experience research, interaction design, participatory methods.",
   },
-  {
-    title: "Inclusive Technology",
-    description: "Designing tools that serve people with diverse abilities and contexts.",
-  },
+  // {
+  //   title: "Inclusive Technology",
+  //   description: "Designing tools that serve people with diverse abilities and contexts.",
+  // },
   {
     title: "Web Engineering",
     description: "Modern frontend architectures, performance, semantic and accessible UI.",
   },
-  {
-    title: "Educational Technology",
-    description: "Accessible learning experiences and digital literacy.",
-  },
-  {
-    title: "Ethics in Technology",
-    description: "Responsible AI, equity, and the social impact of digital systems.",
-  },
+  // {
+  //   title: "Educational Technology",
+  //   description: "Accessible learning experiences and digital literacy.",
+  // },
+  // {
+  //   title: "Ethics in Technology",
+  //   description: "Responsible AI, equity, and the social impact of digital systems.",
+  // },
 ];
 
 export const education = [

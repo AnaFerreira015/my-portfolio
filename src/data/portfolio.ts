@@ -210,6 +210,16 @@ export const events = [
 
 export const experience = [
   {
+    role: "Front-end Developer",
+    company: "eSapiens Tecnologia S.A.",
+    period: "Sep 2023 - Feb 2026",
+    employmentType: "Full-time",
+    location: "Brazil",
+    description:
+      "Worked as a front-end developer, contributing to the development and maintenance of web applications and interfaces, with experience connected to PHP, Node.js, and frontend development practices.",
+    tags: ["Front-end development", "PHP", "Node.js", "Web applications"],
+  },
+  {
     role: "Mid-level Full Stack Developer",
     company: "Hand Talk",
     period: "Jan 2023 - Jul 2023",

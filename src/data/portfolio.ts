@@ -108,7 +108,7 @@ export const publications = [
     authors: "Ferreira, Ana; Ribeiro, Márcio",
     venue: "Brazilian Conference on Software: Practice and Theory (CBSoft)",
     year: "2023",
-    language: "English",
+    language: "Portuguese",
     link: "https://doi.org/10.5753/cbsoft_estendido.2023.235743",
   },
   {

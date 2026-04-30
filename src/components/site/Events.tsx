@@ -18,7 +18,7 @@ export const Events = () => {
 
         <ul role="list" className="mt-12 divide-y divide-border border-y border-border">
           {events.map((e) => (
-            <li key={e.name} className="py-6">
+            <li key={`${e.name}-${e.date}-${e.role}`} className="py-6">
               <article className="grid gap-2 sm:grid-cols-[180px,1fr] sm:gap-8 sm:items-baseline">
                 <p className="text-sm text-muted-foreground">{e.date}</p>
                 <div>

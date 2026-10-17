@@ -1,25 +1,28 @@
 import { education } from "@/data/portfolio";
+import { tr } from "@/i18n/config";
+import { useLang, useT } from "@/i18n/context";
+import { formatPeriod } from "@/i18n/format";
 
 export const Education = () => {
+  const lang = useLang();
+  const t = useT().education;
+
   return (
     <section id="education" aria-labelledby="education-heading" className="section">
       <div className="container-prose">
         <div className="grid gap-12 md:grid-cols-12 md:gap-16">
           <div className="md:col-span-4">
-            <p className="eyebrow">03 - Education</p>
+            <p className="eyebrow">{t.eyebrow}</p>
             <h2 id="education-heading" className="section-title text-balance">
-              Academic foundations.
+              {t.title}
             </h2>
-            <p className="section-lede">
-              Formal training in informatics with a focus on human-computer
-              interaction and inclusive design.
-            </p>
+            <p className="section-lede">{t.lede}</p>
           </div>
 
           <div className="md:col-span-8">
             <ol role="list" className="relative border-l border-border pl-8">
               {education.map((e) => (
-                <li key={e.degree} className="relative pb-10 last:pb-0">
+                <li key={tr(e.degree, "en")} className="relative pb-10 last:pb-0">
                   {/* Marker */}
                   <span
                     aria-hidden="true"
@@ -29,17 +32,17 @@ export const Education = () => {
                   </span>
 
                   <p className="text-xs font-medium uppercase tracking-wider text-muted-foreground">
-                    {e.period}
+                    {formatPeriod(e.start, e.end, lang)}
                   </p>
                   <h3 className="mt-2 font-serif text-xl font-semibold text-foreground">
-                    {e.degree}
+                    {tr(e.degree, lang)}
                   </h3>
                   <p className="mt-1 text-[15px] text-foreground/80">
-                    {e.institution}
+                    {tr(e.institution, lang)}
                   </p>
                   {e.detail && (
                     <p className="mt-3 text-[15px] leading-relaxed text-muted-foreground">
-                      {e.detail}
+                      {tr(e.detail, lang)}
                     </p>
                   )}
                 </li>

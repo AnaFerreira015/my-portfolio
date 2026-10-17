@@ -5,16 +5,16 @@ vi.mock("@/data/portfolio", () => ({
   events: [
     {
       name: "Event with link",
-      date: "2026",
+      date: "2026-04",
       role: "Speaker",
-      language: "English",
+      language: "en",
       link: "https://example.com",
     },
     {
       name: "Event without link",
-      date: "2025",
+      date: "2025-11",
       role: "Attendee",
-      language: "Portuguese",
+      language: "pt",
       link: "#",
     },
   ],
@@ -40,7 +40,8 @@ describe("Events", () => {
       })
     ).not.toBeInTheDocument();
 
+    expect(screen.getByText("Apr 2026")).toBeInTheDocument();
     expect(screen.getByText("English")).toBeInTheDocument();
     expect(screen.getByText("Portuguese")).toBeInTheDocument();
   });
-});
+});

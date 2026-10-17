@@ -1,7 +1,11 @@
 import { Mail, Linkedin, Github, GraduationCap } from "lucide-react";
 import { profile } from "@/data/portfolio";
+import { useT } from "@/i18n/context";
 
 export const Contact = () => {
+  const ui = useT();
+  const t = ui.contact;
+
   return (
     <section
       id="contact"
@@ -10,13 +14,11 @@ export const Contact = () => {
     >
       <div className="container-narrow">
         <div className="max-w-2xl">
-          <p className="eyebrow">Contact</p>
+          <p className="eyebrow">{t.eyebrow}</p>
           <h2 id="contact-heading" className="section-title">
-            Let's collaborate
+            {t.title}
           </h2>
-          <p className="section-lede">
-            I'm always happy to discuss research collaborations, accessibility consulting, speaking opportunities, or interesting problems in inclusive technology.
-          </p>
+          <p className="section-lede">{t.lede}</p>
 
           <div className="mt-10 space-y-3">
             <a
@@ -35,7 +37,7 @@ export const Contact = () => {
               <Linkedin className="h-4 w-4 text-accent shrink-0" aria-hidden="true" />
               <span className="link-underline">
                 LinkedIn
-                <span className="sr-only"> (opens in new tab)</span>
+                <span className="sr-only"> {ui.opensInNewTab}</span>
               </span>
             </a>
             <a
@@ -47,7 +49,7 @@ export const Contact = () => {
               <Github className="h-4 w-4 text-accent shrink-0" aria-hidden="true" />
               <span className="link-underline">
                 GitHub
-                <span className="sr-only"> (opens in new tab)</span>
+                <span className="sr-only"> {ui.opensInNewTab}</span>
               </span>
             </a>
             <a
@@ -59,7 +61,7 @@ export const Contact = () => {
               <GraduationCap className="h-4 w-4 text-accent shrink-0" aria-hidden="true" />
               <span className="link-underline">
                 Google Scholar
-                <span className="sr-only"> (opens in new tab)</span>
+                <span className="sr-only"> {ui.opensInNewTab}</span>
               </span>
             </a>
           </div>

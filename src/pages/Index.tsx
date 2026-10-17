@@ -10,9 +10,14 @@ import { AccessibilityStatement } from "@/components/site/AccessibilityStatement
 import { Contact } from "@/components/site/Contact";
 import { SiteFooter } from "@/components/site/SiteFooter";
 import { profile } from "@/data/portfolio";
+import { HTML_LANG, tr } from "@/i18n/config";
+import { useLang, useT } from "@/i18n/context";
 import { useEffect } from "react";
 
 const Index = () => {
+  const lang = useLang();
+  const t = useT();
+
   useEffect(() => {
     const ld = document.createElement("script");
     ld.type = "application/ld+json";
@@ -20,8 +25,9 @@ const Index = () => {
       "@context": "https://schema.org",
       "@type": "Person",
       name: profile.name,
-      jobTitle: profile.title,
-      url: typeof window !== "undefined" ? window.location.origin : "",
+      jobTitle: tr(profile.title, lang),
+      url: typeof window !== "undefined" ? `${window.location.origin}/${lang}` : "",
+      inLanguage: HTML_LANG[lang],
       sameAs: [
         profile.links.linkedin,
         profile.links.github,
@@ -29,18 +35,18 @@ const Index = () => {
         profile.links.orcid,
         profile.links.researchgate,
       ].filter(Boolean),
-      description: profile.shortBio,
+      description: tr(profile.shortBio, lang),
     });
     document.head.appendChild(ld);
     return () => {
       document.head.removeChild(ld);
     };
-  }, []);
+  }, [lang]);
 
   return (
     <div className="min-h-screen flex flex-col">
       <a href="#main" className="skip-link">
-        Skip to main content
+        {t.skipLink}
       </a>
       <SiteHeader />
       <main id="main" className="flex-1">

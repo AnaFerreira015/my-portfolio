@@ -57,4 +57,25 @@ test.describe("portfolio homepage", () => {
 
     await expect(page.getByRole("main")).toBeVisible();
   });
+
+  test("switches between English and Portuguese", async ({ page }) => {
+    await page.goto("/en");
+    await expect(page.locator("html")).toHaveAttribute("lang", "en");
+
+    await page
+      .getByRole("link", { name: /português/i })
+      .filter({ visible: true })
+      .first()
+      .click();
+
+    await expect(page).toHaveURL(/\/pt$/);
+    await expect(page.locator("html")).toHaveAttribute("lang", "pt-BR");
+    await expect(
+      page.getByRole("heading", { name: /experiência profissional/i }),
+    ).toBeVisible();
+
+    // The choice is remembered when coming back to "/".
+    await page.goto("/");
+    await expect(page).toHaveURL(/\/pt$/);
+  });
 });

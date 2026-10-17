@@ -1,7 +1,14 @@
 import { describe, expect, it, beforeEach } from "vitest";
 import { render, screen, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { SiteHeader } from "@/components/site/SiteHeader";
+import { MemoryRouter } from "react-router-dom";
+import { SiteHeader as Header } from "@/components/site/SiteHeader";
+
+const SiteHeader = () => (
+  <MemoryRouter>
+    <Header />
+  </MemoryRouter>
+);
 
 describe("SiteHeader", () => {
   beforeEach(() => {
@@ -84,4 +91,4 @@ describe("SiteHeader", () => {
 
     expect(mobileNav).not.toBeInTheDocument();
   });
-});
+});

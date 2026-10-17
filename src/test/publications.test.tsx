@@ -8,7 +8,7 @@ vi.mock("@/data/portfolio", () => ({
       authors: "Ana Ferreira",
       venue: "Conference",
       year: "2026",
-      language: "English",
+      language: "en",
       link: "https://example.com/publication",
     },
     {
@@ -16,7 +16,7 @@ vi.mock("@/data/portfolio", () => ({
       authors: "Ana Ferreira",
       venue: "Journal",
       year: "2025",
-      language: "Portuguese",
+      language: "pt",
       link: "#",
     },
   ],
@@ -44,5 +44,9 @@ describe("Publications", () => {
 
     expect(screen.getByText("English")).toBeInTheDocument();
     expect(screen.getByText("Portuguese")).toBeInTheDocument();
+
+    // Titles written in another language get a lang attribute for screen readers.
+    expect(screen.getByText("Publication without link").closest("h3")).toHaveAttribute("lang", "pt-BR");
+    expect(screen.getByRole("link", { name: /publication with link/i }).closest("h3")).not.toHaveAttribute("lang");
   });
-});
+});

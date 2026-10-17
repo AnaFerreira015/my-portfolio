@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
+import { LanguageProvider, LanguageRedirect } from "@/i18n/LanguageRoutes";
 import Index from "./pages/Index.tsx";
 import NotFound from "./pages/NotFound.tsx";
 
@@ -20,7 +21,15 @@ const App = () => (
         }}
       >
         <Routes>
-          <Route path="/" element={<Index />} />
+          <Route path="/" element={<LanguageRedirect />} />
+          <Route
+            path="/:lang"
+            element={
+              <LanguageProvider>
+                <Index />
+              </LanguageProvider>
+            }
+          />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

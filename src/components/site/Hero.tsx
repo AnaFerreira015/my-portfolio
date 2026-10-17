@@ -1,15 +1,22 @@
 import { Mail, Linkedin, Github, GraduationCap } from "lucide-react";
 import { profile } from "@/data/portfolio";
 import portrait from "@/assets/portrait.jpeg";
+import { tr } from "@/i18n/config";
+import { useLang, useT } from "@/i18n/context";
+import type { UI } from "@/i18n/ui";
 
-const iconLinks = [
-  { href: profile.links.email, label: "Send email", Icon: Mail },
-  { href: profile.links.linkedin, label: "LinkedIn profile", Icon: Linkedin },
-  { href: profile.links.github, label: "GitHub profile", Icon: Github },
-  { href: profile.links.scholar, label: "Google Scholar profile", Icon: GraduationCap },
+const iconLinks: {
+  href: string;
+  labelKey: Exclude<keyof UI["hero"], "linksLabel" | "portraitAlt">;
+  Icon: React.ComponentType<React.SVGProps<SVGSVGElement>>;
+}[] = [
+  { href: profile.links.email, labelKey: "email", Icon: Mail },
+  { href: profile.links.linkedin, labelKey: "linkedin", Icon: Linkedin },
+  { href: profile.links.github, labelKey: "github", Icon: Github },
+  { href: profile.links.scholar, labelKey: "scholar", Icon: GraduationCap },
   {
     href: profile.links.orcid,
-    label: "ORCID profile",
+    labelKey: "orcid",
     // ORCID brand glyph as inline SVG (no lucide equivalent)
     Icon: (props: React.SVGProps<SVGSVGElement>) => (
       <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" {...props}>
@@ -22,7 +29,7 @@ const iconLinks = [
   },
   {
     href: profile.links.researchgate,
-    label: "ResearchGate profile",
+    labelKey: "researchgate",
     Icon: (props: React.SVGProps<SVGSVGElement>) => (
       <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" {...props}>
         <path
@@ -35,6 +42,9 @@ const iconLinks = [
 ];
 
 export const Hero = () => {
+  const lang = useLang();
+  const t = useT().hero;
+
   return (
     <section
       id="top"
@@ -45,7 +55,7 @@ export const Hero = () => {
         <div className="flex flex-col-reverse items-start gap-10 sm:flex-row sm:items-center sm:gap-12">
           {/* Text */}
           <div className="max-w-2xl flex-1">
-            <p className="eyebrow !text-hero-accent">{profile.title}</p>
+            <p className="eyebrow !text-hero-accent">{tr(profile.title, lang)}</p>
 
             <h1
               id="hero-heading"
@@ -56,20 +66,20 @@ export const Hero = () => {
 
             <div className="mt-6 space-y-1 text-base sm:text-lg text-hero-muted">
               <p className="font-medium text-hero-foreground">
-                {profile.affiliation}
+                {tr(profile.affiliation, lang)}
               </p>
-              <p>{profile.group}</p>
+              <p>{tr(profile.group, lang)}</p>
             </div>
 
             <ul
               className="mt-8 flex flex-wrap items-center gap-2"
-              aria-label="Contact and profile links"
+              aria-label={t.linksLabel}
             >
-              {iconLinks.map(({ href, label, Icon }) => (
-                <li key={label}>
+              {iconLinks.map(({ href, labelKey, Icon }) => (
+                <li key={labelKey}>
                   <a
                     href={href}
-                    aria-label={label}
+                    aria-label={t[labelKey]}
                     target={href?.startsWith("http") ? "_blank" : undefined}
                     rel={href?.startsWith("http") ? "noopener noreferrer" : undefined}
                     className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-hero-muted/30 text-hero-foreground transition-colors hover:bg-hero-accent hover:text-hero hover:border-hero-accent"
@@ -85,7 +95,7 @@ export const Hero = () => {
           <div className="shrink-0">
             <img
               src={portrait}
-              alt={`Portrait of ${profile.name}`}
+              alt={`${t.portraitAlt} ${profile.name}`}
               width={160}
               height={160}
               className="h-32 w-32 sm:h-60 sm:w-60 rounded-full object-cover ring-2 ring-hero-accent/60 shadow-lg"

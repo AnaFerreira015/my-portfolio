@@ -1,20 +1,28 @@
 import { useEffect, useState } from "react";
 import { Moon, Sun, Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
-
-const NAV = [
-  { href: "#about", label: "Bio" },
-  { href: "#publications", label: "Papers" },
-  { href: "#events", label: "Events" },
-  { href: "#experience", label: "Experience" },
-];
+import { LanguageSwitcher } from "@/components/site/LanguageSwitcher";
+import { useT } from "@/i18n/context";
 
 export const SiteHeader = () => {
   const [open, setOpen] = useState(false);
   const [dark, setDark] = useState(false);
+  const t = useT().header;
+
+  const NAV = [
+    { href: "#about", label: t.nav.about },
+    { href: "#publications", label: t.nav.publications },
+    { href: "#events", label: t.nav.events },
+    { href: "#experience", label: t.nav.experience },
+  ];
 
   useEffect(() => {
-    const stored = localStorage.getItem("theme");
+    let stored: string | null = null;
+    try {
+      stored = localStorage.getItem("theme");
+    } catch {
+      // Storage blocked: fall back to the system preference.
+    }
     const prefers = window.matchMedia("(prefers-color-scheme: dark)").matches;
     const isDark = stored ? stored === "dark" : prefers;
     setDark(isDark);
@@ -25,7 +33,11 @@ export const SiteHeader = () => {
     const next = !dark;
     setDark(next);
     document.documentElement.classList.toggle("dark", next);
-    localStorage.setItem("theme", next ? "dark" : "light");
+    try {
+      localStorage.setItem("theme", next ? "dark" : "light");
+    } catch {
+      // Storage blocked: the theme still changes for this visit.
+    }
   };
 
   return (
@@ -38,7 +50,7 @@ export const SiteHeader = () => {
           Ana Ferreira
         </a>
 
-        <nav aria-label="Primary" className="hidden md:flex items-center gap-1">
+        <nav aria-label={t.navLabel} className="hidden md:flex items-center gap-1">
           {NAV.map((item) => (
             <a
               key={item.href}
@@ -48,23 +60,24 @@ export const SiteHeader = () => {
               {item.label}
             </a>
           ))}
+          <LanguageSwitcher className="ml-2" />
           <Button
             variant="ghost"
             size="icon"
             onClick={toggleTheme}
-            aria-label={dark ? "Switch to light theme" : "Switch to dark theme"}
-            className="ml-2"
+            aria-label={dark ? t.toLight : t.toDark}
           >
             {dark ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
           </Button>
         </nav>
 
         <div className="flex items-center gap-1 md:hidden">
+          <LanguageSwitcher variant="compact" />
           <Button
             variant="ghost"
             size="icon"
             onClick={toggleTheme}
-            aria-label={dark ? "Switch to light theme" : "Switch to dark theme"}
+            aria-label={dark ? t.toLight : t.toDark}
           >
             {dark ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
           </Button>
@@ -72,7 +85,7 @@ export const SiteHeader = () => {
             variant="ghost"
             size="icon"
             onClick={() => setOpen(!open)}
-            aria-label={open ? "Close menu" : "Open menu"}
+            aria-label={open ? t.closeMenu : t.openMenu}
             aria-expanded={open}
             aria-controls="mobile-nav"
           >
@@ -82,7 +95,7 @@ export const SiteHeader = () => {
       </div>
 
       {open && (
-        <nav id="mobile-nav" aria-label="Mobile" className="md:hidden border-t border-border">
+        <nav id="mobile-nav" aria-label={t.mobileNavLabel} className="md:hidden border-t border-border">
           <ul className="container-prose py-3 flex flex-col">
             {NAV.map((item) => (
               <li key={item.href}>

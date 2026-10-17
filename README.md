@@ -50,3 +50,20 @@ Accessibility is tested at two levels:
 2. Browser-level checks using `@axe-core/playwright`
 
 These automated tests help identify accessibility issues, but they do not replace manual review with keyboard navigation, screen readers, assistive technologies, and real user feedback.
+
+## Languages (English / Portuguese)
+
+The site is available in English at `/en` and in Brazilian Portuguese at `/pt`.
+
+- `/` redirects to the language the visitor chose before (saved in `localStorage`) or, on a first visit, to the browser language (`pt-*` goes to `/pt`, anything else to `/en`).
+- The language link in the header switches versions and keeps the current section (`/en#events` becomes `/pt#events`).
+- `<html lang>`, the page title and the meta description follow the current language.
+- Titles of papers written in a different language from the page get their own `lang` attribute, so screen readers pronounce them correctly.
+
+Where the text lives:
+
+- `src/i18n/ui.ts`: interface text (headings, buttons, labels). TypeScript requires the `pt` object to have every key in `en`.
+- `src/data/portfolio.ts`: portfolio content. A field is either a plain string (same in both languages) or `{ en, pt }`. Dates use `"YYYY-MM"` and are formatted per language by `src/i18n/format.ts`.
+- `src/test/portfolio-data.test.ts` fails if any `{ en, pt }` field is missing a translation.
+
+Hosting note: `/en` and `/pt` are client-side routes, so the host must serve `index.html` for them (SPA fallback). Vercel, Netlify and Lovable do this with the usual SPA settings; on GitHub Pages you need the `404.html` redirect trick.

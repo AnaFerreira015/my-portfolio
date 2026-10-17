@@ -1,6 +1,11 @@
 import { researchInterests } from "@/data/portfolio";
+import { tr } from "@/i18n/config";
+import { useLang, useT } from "@/i18n/context";
 
 export const Interests = () => {
+  const lang = useLang();
+  const t = useT().interests;
+
   return (
     <section
       id="interests"
@@ -9,15 +14,11 @@ export const Interests = () => {
     >
       <div className="container-prose">
         <div className="max-w-2xl">
-          <p className="eyebrow">02 - Research interests</p>
+          <p className="eyebrow">{t.eyebrow}</p>
           <h2 id="interests-heading" className="section-title text-balance">
-            What I think about, write about, and build.
+            {t.title}
           </h2>
-          <p className="section-lede">
-            My work sits at the crossroads of human-centered research and
-            engineering practice - informed by accessibility, ethics, and a
-            belief that the best technology is the kind everyone can use.
-          </p>
+          <p className="section-lede">{t.lede}</p>
         </div>
 
         <ol
@@ -26,7 +27,7 @@ export const Interests = () => {
         >
           {researchInterests.map((r, i) => (
             <li
-              key={r.title}
+              key={tr(r.title, "en")}
               className="group relative flex flex-col gap-3 bg-background p-7 transition-colors hover:bg-accent-soft/60"
             >
               <span
@@ -36,10 +37,10 @@ export const Interests = () => {
                 {String(i + 1).padStart(2, "0")}
               </span>
               <h3 className="font-serif text-xl font-semibold text-foreground">
-                {r.title}
+                {tr(r.title, lang)}
               </h3>
               <p className="text-[15px] leading-relaxed text-muted-foreground">
-                {r.description}
+                {tr(r.description, lang)}
               </p>
             </li>
           ))}

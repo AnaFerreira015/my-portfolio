@@ -13,9 +13,9 @@ export const Publications = () => {
       <div className="container-narrow">
         <div className="max-w-2xl">
           <p className="eyebrow">{t.eyebrow}</p>
-          <h2 id="publications-heading" className="section-title">
+          <h3 id="publications-heading" className="section-title">
             {t.title}
-          </h2>
+          </h3>
         </div>
 
         <ul role="list" className="mt-12 space-y-10">
@@ -31,7 +31,7 @@ export const Publications = () => {
                   )}
                 </div>
                 <div>
-                  <h3
+                  <h4
                     lang={p.language !== lang ? HTML_LANG[p.language] : undefined}
                     className="font-serif text-xl font-semibold leading-snug text-pretty"
                   >
@@ -52,7 +52,7 @@ export const Publications = () => {
                     ) : (
                       p.title
                     )}
-                  </h3>
+                  </h4>
                   <p className="mt-2 text-sm text-muted-foreground">{p.authors}</p>
                   <p className="mt-0.5 text-sm italic text-muted-foreground">{tr(p.venue, lang)}</p>
                 </div>

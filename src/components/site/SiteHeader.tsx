@@ -10,10 +10,11 @@ export const SiteHeader = () => {
   const t = useT().header;
 
   const NAV = [
-    { href: "#about", label: t.nav.about },
-    { href: "#publications", label: t.nav.publications },
-    { href: "#events", label: t.nav.events },
+    { href: "#projects", label: t.nav.projects },
     { href: "#experience", label: t.nav.experience },
+    { href: "#about", label: t.nav.about },
+    { href: "#research", label: t.nav.research },
+    { href: "#contact", label: t.nav.contact },
   ];
 
   useEffect(() => {
@@ -50,7 +51,7 @@ export const SiteHeader = () => {
           Ana Ferreira
         </a>
 
-        <nav aria-label={t.navLabel} className="hidden md:flex items-center gap-1">
+        <nav aria-label={t.navLabel} className="hidden lg:flex items-center gap-1">
           {NAV.map((item) => (
             <a
               key={item.href}
@@ -71,7 +72,7 @@ export const SiteHeader = () => {
           </Button>
         </nav>
 
-        <div className="flex items-center gap-1 md:hidden">
+        <div className="flex items-center gap-1 lg:hidden">
           <LanguageSwitcher variant="compact" />
           <Button
             variant="ghost"
@@ -95,7 +96,7 @@ export const SiteHeader = () => {
       </div>
 
       {open && (
-        <nav id="mobile-nav" aria-label={t.mobileNavLabel} className="md:hidden border-t border-border">
+        <nav id="mobile-nav" aria-label={t.mobileNavLabel} className="lg:hidden border-t border-border">
           <ul className="container-prose py-3 flex flex-col">
             {NAV.map((item) => (
               <li key={item.href}>

@@ -33,14 +33,14 @@ const PANELIST: Localized = { en: "Panelist", pt: "Painelista" };
 export const profile = {
   name: "Ana Ferreira",
   title: {
-    en: "Researcher · Developer · Accessibility Specialist",
-    pt: "Pesquisadora · Desenvolvedora · Especialista em Acessibilidade",
+    en: "Front-end Developer",
+    pt: "Desenvolvedora Front-end",
   } as Localized,
   affiliation: UFAL,
   group: "EASY - Engineering and Systems" as Localized,
   shortBio: {
-    en: "I work at the intersection of academic research, software development, and inclusive technology - building digital experiences that are accessible by design.",
-    pt: "Trabalho na interseção entre pesquisa acadêmica, desenvolvimento de software e tecnologia inclusiva, criando experiências digitais acessíveis desde a concepção.",
+    en: "I build web applications with React and TypeScript, combining professional experience with research in accessibility and software testing.",
+    pt: "Desenvolvo aplicações web com React e TypeScript, combinando experiência profissional com pesquisa em acessibilidade e testes de software.",
   } as Localized,
   email: "alsf@ic.ufal.br",
   location: { en: "Brazil", pt: "Brasil" } as Localized,

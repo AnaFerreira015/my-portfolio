@@ -85,10 +85,10 @@ describe("SiteHeader", () => {
 
     await user.click(
       within(mobileNav).getByRole("link", {
-        name: /bio/i,
+        name: /about/i,
       })
     );
 
     expect(mobileNav).not.toBeInTheDocument();
   });
-});
+});

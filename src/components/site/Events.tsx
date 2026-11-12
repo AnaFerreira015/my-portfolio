@@ -18,9 +18,9 @@ export const Events = () => {
       <div className="container-narrow">
         <div className="max-w-2xl">
           <p className="eyebrow">{t.eyebrow}</p>
-          <h2 id="events-heading" className="section-title">
+          <h3 id="events-heading" className="section-title">
             {t.title}
-          </h2>
+          </h3>
         </div>
 
         <ul role="list" className="mt-12 divide-y divide-border border-y border-border">
@@ -31,7 +31,7 @@ export const Events = () => {
                   <time dateTime={e.date}>{formatDate(e.date, lang)}</time>
                 </p>
                 <div>
-                  <h3 className="font-serif text-lg font-semibold leading-snug text-pretty">
+                  <h4 className="font-serif text-lg font-semibold leading-snug text-pretty">
                     {e.link && e.link !== "#" ? (
                       <a
                         href={e.link}
@@ -48,7 +48,7 @@ export const Events = () => {
                     ) : (
                       tr(e.name, lang)
                     )}
-                  </h3>
+                  </h4>
                   <div className="mt-2 flex flex-wrap items-center gap-2">
                     <p className="text-sm text-accent">{tr(e.role, lang)}</p>
                     {e.language && (

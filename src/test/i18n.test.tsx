@@ -46,7 +46,7 @@ describe("bilingual site", () => {
     expect(screen.getByRole("heading", { name: /publicações em destaque/i })).toBeInTheDocument();
     expect(screen.getByRole("link", { name: /pular para o conteúdo principal/i })).toBeInTheDocument();
     expect(document.documentElement.lang).toBe("pt-BR");
-    expect(document.title).toMatch(/pesquisadora/i);
+    expect(document.title).toMatch(/desenvolvedora front-end/i);
     expect(localStorage.getItem("lang")).toBe("pt");
   });
 

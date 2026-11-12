@@ -3,7 +3,7 @@ import animate from "tailwindcss-animate";
 
 export default {
   darkMode: ["class"],
-  content: ["./pages/**/*.{ts,tsx}", "./components/**/*.{ts,tsx}", "./app/**/*.{ts,tsx}", "./src/**/*.{ts,tsx}"],
+  content: ["./index.html", "./src/App.tsx", "./src/pages/**/*.{ts,tsx}", "./src/components/site/**/*.{ts,tsx}", "./src/components/ui/button.tsx", "./src/i18n/**/*.{ts,tsx}"],
   prefix: "",
   theme: {
     container: {

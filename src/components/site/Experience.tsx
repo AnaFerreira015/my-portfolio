@@ -8,8 +8,8 @@ export const Experience = () => {
   const t = useT().experience;
 
   return (
-    <section id="experience" aria-labelledby="experience-heading" className="section">
-      <div className="container-narrow">
+    <section id="experience" aria-labelledby="experience-heading" className="section !pt-8 sm:!pt-10">
+      <div className="container-prose">
         <div className="max-w-2xl">
           <p className="eyebrow">{t.eyebrow}</p>
           <h2 id="experience-heading" className="section-title">

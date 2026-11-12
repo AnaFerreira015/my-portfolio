@@ -5,10 +5,27 @@ import type { Lang } from "./config";
  * Portfolio content (bio, jobs, papers...) lives in src/data/portfolio.ts.
  */
 const en = {
+  "projects": {
+    "eyebrow": "Selected work",
+    "title": "Projects you can explore",
+    "lede": "Web applications, reusable components and tools I built.",
+    "featured": "Featured",
+    "more": "More projects",
+    "visit": "Open application",
+    "account": "Account required",
+    "prototype": "Prototype",
+    "preview": "Screenshot of"
+  },
+  "research": {
+    "eyebrow": "Research",
+    "title": "Research that informs my work",
+    "lede": "Accessibility and software quality connect my academic research to the interfaces I build."
+  }
+,
   meta: {
-    title: "Ana Ferreira | Researcher, Developer & Accessibility Specialist",
+    title: "Ana Ferreira | Front-end Developer",
     description:
-      "Personal portfolio of Ana Ferreira | researcher, developer, and accessibility specialist working at the intersection of HCI, inclusive design, and modern web engineering.",
+      "Front-end developer working with React, TypeScript and accessibility. Explore my projects, professional experience and research.",
   },
   skipLink: "Skip to main content",
   opensInNewTab: "(opens in new tab)",
@@ -19,7 +36,8 @@ const en = {
     navLabel: "Primary",
     mobileNavLabel: "Mobile",
     nav: {
-      about: "Bio",
+      about: "About",
+      projects: "Projects", research: "Research", contact: "Contact",
       publications: "Papers",
       events: "Events",
       experience: "Experience",
@@ -38,19 +56,20 @@ const en = {
     orcid: "ORCID profile",
     researchgate: "ResearchGate profile",
     portraitAlt: "Portrait of",
+    viewProjects: "View projects", contact: "Get in touch",
   },
   about: {
-    eyebrow: "01 - About",
+    eyebrow: "About",
     title: "About me",
     cv: "Download full CV (PDF)",
   },
   interests: {
-    eyebrow: "02 - Research interests",
+    eyebrow: "Research interests",
     title: "What I think about, write about, and build.",
     lede: "My work sits at the crossroads of human-centered research and engineering practice - informed by accessibility, ethics, and a belief that the best technology is the kind everyone can use.",
   },
   education: {
-    eyebrow: "03 - Education",
+    eyebrow: "Education",
     title: "Academic foundations.",
     lede: "Formal training in informatics with a focus on human-computer interaction and inclusive design.",
   },
@@ -84,7 +103,7 @@ const en = {
   contact: {
     eyebrow: "Contact",
     title: "Let's collaborate",
-    lede: "I'm always happy to discuss research collaborations, accessibility consulting, speaking opportunities, or interesting problems in inclusive technology.",
+    lede: "Let's talk about front-end development opportunities, web projects and accessible interfaces.",
   },
   footer: {
     rights: "All rights reserved.",
@@ -99,10 +118,27 @@ const en = {
 export type UI = typeof en;
 
 const pt: UI = {
+  "projects": {
+    "eyebrow": "Projetos",
+    "title": "Projetos que você pode explorar",
+    "lede": "Aplicações web, componentes reutilizáveis e ferramentas que desenvolvi.",
+    "featured": "Em destaque",
+    "more": "Outros projetos",
+    "visit": "Acessar aplicação",
+    "account": "Requer conta",
+    "prototype": "Protótipo",
+    "preview": "Captura de tela de"
+  },
+  "research": {
+    "eyebrow": "Pesquisa",
+    "title": "Pesquisa que acompanha a prática",
+    "lede": "Acessibilidade e qualidade de software conectam minha pesquisa às interfaces que desenvolvo."
+  }
+,
   meta: {
-    title: "Ana Ferreira | Pesquisadora, Desenvolvedora e Especialista em Acessibilidade",
+    title: "Ana Ferreira | Desenvolvedora Front-end",
     description:
-      "Portfólio de Ana Ferreira | pesquisadora, desenvolvedora e especialista em acessibilidade, atuando na interseção entre IHC, design inclusivo e engenharia web moderna.",
+      "Desenvolvedora front-end com experiência em React, TypeScript e acessibilidade. Conheça meus projetos, experiência profissional e pesquisa.",
   },
   skipLink: "Pular para o conteúdo principal",
   opensInNewTab: "(abre em nova aba)",
@@ -113,7 +149,8 @@ const pt: UI = {
     navLabel: "Principal",
     mobileNavLabel: "Menu móvel",
     nav: {
-      about: "Bio",
+      about: "Sobre",
+      projects: "Projetos", research: "Pesquisa", contact: "Contato",
       publications: "Artigos",
       events: "Eventos",
       experience: "Experiência",
@@ -132,19 +169,20 @@ const pt: UI = {
     orcid: "Perfil no ORCID",
     researchgate: "Perfil no ResearchGate",
     portraitAlt: "Retrato de",
+    viewProjects: "Ver projetos", contact: "Entrar em contato",
   },
   about: {
-    eyebrow: "01 - Sobre",
+    eyebrow: "Sobre",
     title: "Sobre mim",
     cv: "Baixar CV completo (PDF)",
   },
   interests: {
-    eyebrow: "02 - Interesses de pesquisa",
+    eyebrow: "Interesses de pesquisa",
     title: "O que eu estudo, escrevo e construo.",
     lede: "Meu trabalho fica no encontro entre a pesquisa centrada em pessoas e a prática de engenharia, guiado pela acessibilidade, pela ética e pela convicção de que a melhor tecnologia é aquela que todo mundo consegue usar.",
   },
   education: {
-    eyebrow: "03 - Formação",
+    eyebrow: "Formação",
     title: "Base acadêmica.",
     lede: "Formação em computação com foco em interação humano-computador e design inclusivo.",
   },
@@ -178,7 +216,7 @@ const pt: UI = {
   contact: {
     eyebrow: "Contato",
     title: "Vamos colaborar",
-    lede: "Estou sempre aberta a conversar sobre colaborações de pesquisa, consultoria em acessibilidade, convites para palestras ou problemas interessantes em tecnologia inclusiva.",
+    lede: "Vamos conversar sobre oportunidades em desenvolvimento front-end, projetos web e interfaces acessíveis.",
   },
   footer: {
     rights: "Todos os direitos reservados.",

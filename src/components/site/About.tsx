@@ -29,7 +29,7 @@ export const About = () => {
             </div>
 
             {/* Highlights row */}
-            <dl className="mt-10 grid grid-cols-3 gap-6 border-t border-border pt-8">
+            <dl className="mt-10 grid grid-cols-2 gap-6 border-t border-border pt-8">
               {about.highlights.map((h) => (
                 <div key={h.value}>
                   <dt className="text-xs uppercase tracking-wider text-muted-foreground">
@@ -42,13 +42,13 @@ export const About = () => {
               ))}
             </dl>
 
-            <a
+            {profile.links.cv !== "#" && <a
               href={profile.links.cv}
               className="mt-8 inline-flex items-center gap-2 text-sm font-semibold link-underline"
             >
               <FileText className="h-4 w-4" aria-hidden="true" />
               {t.cv}
-            </a>
+            </a>}
           </div>
         </div>
       </div>

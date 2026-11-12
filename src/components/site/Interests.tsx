@@ -15,9 +15,9 @@ export const Interests = () => {
       <div className="container-prose">
         <div className="max-w-2xl">
           <p className="eyebrow">{t.eyebrow}</p>
-          <h2 id="interests-heading" className="section-title text-balance">
+          <h3 id="interests-heading" className="section-title text-balance">
             {t.title}
-          </h2>
+          </h3>
           <p className="section-lede">{t.lede}</p>
         </div>
 
@@ -36,9 +36,9 @@ export const Interests = () => {
               >
                 {String(i + 1).padStart(2, "0")}
               </span>
-              <h3 className="font-serif text-xl font-semibold text-foreground">
+              <h4 className="font-serif text-xl font-semibold text-foreground">
                 {tr(r.title, lang)}
-              </h3>
+              </h4>
               <p className="text-[15px] leading-relaxed text-muted-foreground">
                 {tr(r.description, lang)}
               </p>

@@ -46,7 +46,7 @@ describe("Publications", () => {
     expect(screen.getByText("Portuguese")).toBeInTheDocument();
 
     // Titles written in another language get a lang attribute for screen readers.
-    expect(screen.getByText("Publication without link").closest("h3")).toHaveAttribute("lang", "pt-BR");
-    expect(screen.getByRole("link", { name: /publication with link/i }).closest("h3")).not.toHaveAttribute("lang");
+    expect(screen.getByText("Publication without link").closest("h4")).toHaveAttribute("lang", "pt-BR");
+    expect(screen.getByRole("link", { name: /publication with link/i }).closest("h4")).not.toHaveAttribute("lang");
   });
 });

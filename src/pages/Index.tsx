@@ -1,10 +1,9 @@
+import { Projects } from "@/components/site/Projects";
+import { Research } from "@/components/site/Research";
 import { SiteHeader } from "@/components/site/SiteHeader";
 import { Hero } from "@/components/site/Hero";
 import { About } from "@/components/site/About";
-import { Interests } from "@/components/site/Interests";
 import { Education } from "@/components/site/Education";
-import { Publications } from "@/components/site/Publications";
-import { Events } from "@/components/site/Events";
 import { Experience } from "@/components/site/Experience";
 import { AccessibilityStatement } from "@/components/site/AccessibilityStatement";
 import { Contact } from "@/components/site/Contact";
@@ -51,12 +50,11 @@ const Index = () => {
       <SiteHeader />
       <main id="main" className="flex-1">
         <Hero />
-        <About />
-        <Interests />
-        <Education />
-        <Publications />
-        <Events />
+        <Projects />
         <Experience />
+        <About />
+        <Education />
+        <Research />
         <AccessibilityStatement />
         <Contact />
       </main>

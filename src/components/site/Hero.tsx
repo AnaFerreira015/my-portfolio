@@ -1,13 +1,12 @@
 import { Mail, Linkedin, Github, GraduationCap } from "lucide-react";
 import { profile } from "@/data/portfolio";
-import portrait from "@/assets/portrait.jpeg";
 import { tr } from "@/i18n/config";
 import { useLang, useT } from "@/i18n/context";
 import type { UI } from "@/i18n/ui";
 
 const iconLinks: {
   href: string;
-  labelKey: Exclude<keyof UI["hero"], "linksLabel" | "portraitAlt">;
+  labelKey: Exclude<keyof UI["hero"], "linksLabel" | "portraitAlt" | "viewProjects" | "contact">;
   Icon: React.ComponentType<React.SVGProps<SVGSVGElement>>;
 }[] = [
   { href: profile.links.email, labelKey: "email", Icon: Mail },
@@ -64,11 +63,13 @@ export const Hero = () => {
               {profile.name}
             </h1>
 
-            <div className="mt-6 space-y-1 text-base sm:text-lg text-hero-muted">
-              <p className="font-medium text-hero-foreground">
-                {tr(profile.affiliation, lang)}
-              </p>
-              <p>{tr(profile.group, lang)}</p>
+            <p className="mt-6 max-w-xl text-lg leading-relaxed text-hero-muted">{tr(profile.shortBio, lang)}</p>
+            <ul className="mt-5 flex flex-wrap gap-2" aria-label={lang === "pt" ? "Especialidades" : "Specialties"}>
+              {["React", "TypeScript", lang === "pt" ? "Acessibilidade" : "Accessibility"].map(skill => <li key={skill} className="rounded-full border border-hero-muted/40 px-3 py-1 text-sm text-hero-foreground">{skill}</li>)}
+            </ul>
+            <div className="mt-8 flex flex-wrap gap-3">
+              <a href="#projects" className="inline-flex min-h-12 items-center rounded-md bg-hero-accent px-5 py-3 font-semibold text-hero">{t.viewProjects}</a>
+              <a href="#contact" className="inline-flex min-h-12 items-center rounded-md border border-hero-muted px-5 py-3 font-semibold text-hero-foreground">{t.contact}</a>
             </div>
 
             <ul
@@ -94,7 +95,10 @@ export const Hero = () => {
           {/* Portrait */}
           <div className="shrink-0">
             <img
-              src={portrait}
+              src="/portrait-480.webp"
+              srcSet="/portrait-256.webp 256w, /portrait-480.webp 480w"
+              sizes="(min-width: 640px) 240px, 128px"
+              decoding="async"
               alt={`${t.portraitAlt} ${profile.name}`}
               width={160}
               height={160}
